@@ -1,32 +1,35 @@
-import { useState } from "react";
+// App.jsx
+import { useState, useEffect } from "react";
 import Layout from "./components/Layout";
 import ListaProductos from "./components/ListaProductos";
 import Carrito from "./components/Carrito";
-
 import "./App.css";
 
-
 function App() {
-  
+  const [productos, setProductos] = useState([]);
   const [carrito, setCarrito] = useState([]);
-  const vaciarCarrito = () => {
-  setCarrito([]);
-};
+  const [cargando, setCargando] = useState(true);
 
-  const productos = [
-    { id: 1, nombre: "Laptop", precio: 1200 },
-    { id: 2, nombre: "Auriculares", precio: 150 },
-    { id: 3, nombre: "Mouse Gamer", precio: 80 },
-  ];
+  useEffect(() => {
+    const obtenerProductos = async () => {
+      try {
+        const respuesta = await fetch("https://fakestoreapi.com/products");
+        const datos = await respuesta.json();
+        setProductos(datos);
+      } catch (error) {
+        console.error("Error al obtener productos:", error);
+      } finally {
+        setCargando(false);
+      }
+    };
 
-
+    obtenerProductos();
+  }, []);
 
   const agregarAlCarrito = (producto) => {
-    // Verificar si ya existe en el carrito
     const existe = carrito.find((item) => item.id === producto.id);
 
     if (existe) {
-      // Incrementar cantidad
       setCarrito(
         carrito.map((item) =>
           item.id === producto.id
@@ -35,17 +38,58 @@ function App() {
         )
       );
     } else {
-      // Agregar nuevo con cantidad 1
       setCarrito([...carrito, { ...producto, cantidad: 1 }]);
     }
   };
 
+  const aumentarCantidad = (idProducto) => {
+    setCarrito(
+      carrito.map((item) =>
+        item.id === idProducto
+          ? { ...item, cantidad: item.cantidad + 1 }
+          : item
+      )
+    );
+  };
+
+  const disminuirCantidad = (idProducto) => {
+    setCarrito(
+      carrito
+        .map((item) =>
+          item.id === idProducto
+            ? { ...item, cantidad: item.cantidad - 1 }
+            : item
+        )
+        .filter((item) => item.cantidad > 0)
+    );
+  };
+
+  const eliminarProducto = (idProducto) => {
+    setCarrito(carrito.filter((item) => item.id !== idProducto));
+  };
+
+  const vaciarCarrito = () => {
+    setCarrito([]);
+  };
+
   return (
     <Layout>
-      <ListaProductos productos={productos} agregarAlCarrito={agregarAlCarrito} />
-      <Carrito carrito={carrito} vaciarCarrito={vaciarCarrito} />
+      {cargando ? (
+        <p>Cargando productos...</p>
+      ) : (
+        <ListaProductos
+          productos={productos}
+          agregarAlCarrito={agregarAlCarrito}
+        />
+      )}
+      <Carrito
+        carrito={carrito}
+        vaciarCarrito={vaciarCarrito}
+        aumentarCantidad={aumentarCantidad}
+        disminuirCantidad={disminuirCantidad}
+        eliminarProducto={eliminarProducto}
+      />
     </Layout>
-
   );
 }
 

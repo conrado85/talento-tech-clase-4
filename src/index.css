@@ -42,8 +42,8 @@ p {
 
 button {
   border-radius: 50px;
-  border: 1px solid transparent;
-  width: 200px;
+  border: 1px solid #197a78;
+  width: auto;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;

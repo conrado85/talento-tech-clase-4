@@ -1,4 +1,5 @@
-// components/ListaProductos.jsx
+import "../estilo/listaProducto.css";
+
 export default function ListaProductos({ productos, agregarAlCarrito }) {
   return (
     <section className="lista-productos">
@@ -6,8 +7,9 @@ export default function ListaProductos({ productos, agregarAlCarrito }) {
       <ul>
         {productos.map((p) => (
           <li key={p.id} className="tarjeta-producto">
-            <h3>{p.nombre}</h3>
-            <p>Precio: ${p.precio}</p>
+            <img src={p.image} alt={p.title} className="imagen-producto" />
+            <h3>{p.title}</h3>
+            <p>${p.price}</p>
             <button onClick={() => agregarAlCarrito(p)}>Agregar al carrito</button>
           </li>
         ))}

@@ -1,5 +1,5 @@
 
-import React from 'react';
+import "../estilo/nav.css";
 
 function Nav() {
   return (
