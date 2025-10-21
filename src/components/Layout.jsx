@@ -1,17 +1,19 @@
 // components/Layout.jsx
+import { Link, Outlet, useLocation } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import Nav from "./Nav";
-import Formulario from "./Formulario";
 
-export default function Layout({ children }) {
+
+ function Layout({ children }) {
   return (
     <div className="layout">
       <Nav />
       <Header />
-      <main className="contenido">{children}</main>
-      <Formulario />
+      <main className="contenido"><Outlet /></main>
       <Footer />
     </div>
   );
 }
+      
+export default Layout;
