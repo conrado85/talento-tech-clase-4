@@ -22,7 +22,7 @@ function Nav() {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/formulario">Formulario</Link>
+          <Link to="/login">logins</Link>
         </li>
       </ul>   
     </nav>

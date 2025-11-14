@@ -5,7 +5,7 @@ import Carrito from "../components/Carrito";
 import "../App.css";
 
 
-function Home() {
+function HomePage() {
   const [productos, setProductos] = useState([]);
   const [carrito, setCarrito] = useState([]);
   const [cargando, setCargando] = useState(true);
@@ -93,4 +93,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomePage;
