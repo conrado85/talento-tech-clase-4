@@ -1,4 +1,4 @@
-import "../estilo/listaProducto.css";
+import "../styles/listaProducto.css";
 
 export default function ListaProductos({ productos, agregarAlCarrito }) {
   return (

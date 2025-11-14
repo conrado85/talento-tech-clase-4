@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import "../estilo/input.css";
+import "../styles/input.css";
 function Formulario() {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");

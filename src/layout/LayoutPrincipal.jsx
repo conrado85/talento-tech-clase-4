@@ -1,11 +1,11 @@
 // components/Layout.jsx
 import { Link, Outlet, useLocation } from "react-router-dom";
-import Header from "./Header";
-import Footer from "./Footer";
-import Nav from "./Nav";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import Nav from "../components/Nav";
 
 
- function Layout({ children }) {
+ function LayoutPrincipal({ children }) {
   return (
     <div className="layout">
       <Nav />
@@ -16,4 +16,4 @@ import Nav from "./Nav";
   );
 }
       
-export default Layout;
+export default LayoutPrincipal;

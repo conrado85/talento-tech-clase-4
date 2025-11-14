@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../estilo/nav.css";
+import "../styles/nav.css";
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 function Nav() {
 

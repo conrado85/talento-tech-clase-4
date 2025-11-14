@@ -1,9 +1,9 @@
 // App.jsx
 import { useState, useEffect } from "react";
-import Layout from "../components/Layout";
 import ListaProductos from "../components/ListaProductos";
 import Carrito from "../components/Carrito";
 import "../App.css";
+
 
 function Home() {
   const [productos, setProductos] = useState([]);

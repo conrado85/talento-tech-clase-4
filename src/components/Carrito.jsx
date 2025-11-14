@@ -1,4 +1,4 @@
-import "../estilo/carrito.css";
+import "../styles/carrito.css";
 export default function Carrito({
   carrito = [],
   vaciarCarrito,
