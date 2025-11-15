@@ -2,6 +2,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./page/HomePage"
 import Formulario from "./page/Formulario"
+import ProductsPage from "./page/ProductsPage"
+import ProductsDetailPage from "./page/productsDetailPage"
+import CartPage from "./page/CartPage"
+import CheckoutPage from "./page/CheckoutPage"
 
 import Layout from "./layout/LayoutPrincipal";
 function App() {
