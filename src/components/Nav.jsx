@@ -1,30 +1,26 @@
 import { useState } from "react";
 import "../styles/nav.css";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 function Nav() {
-
- const [user, setUser] = useState(null);
-
-  const login = () =>
-    setUser({
-      id: 1,
-      name: "John",
-      permissions: ["analize"],
-      roles: ["admin"],
-    });
-  const logout = () => setUser(null);
-
-
+  
+ const menuNavBar = [
+    { to: "/", label: "Home" },
+    { to: "/login", label: "login" },
+    { to: "/products", label: "Products" },
+    { to: "/cart", label: "Cart" },
+    { to: "/checkout", label: "Checkout" },
+ ]
+  
   return (
     <nav className="navbar">
       <ul className="navbar-list">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/login">logins</Link>
-        </li>
+        {menuNavBar.map((item) => (
+          <li key={item.to} className="navbar-item">
+            <Link to={item.to}>{item.label}</Link>
+          </li>
+        ))}
       </ul>   
+       
     </nav>
   );
 }

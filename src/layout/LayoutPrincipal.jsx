@@ -9,7 +9,6 @@ import Nav from "../components/Nav";
   return (
     <div className="layout">
       <Nav />
-      <Header />
       <main className="contenido"><Outlet /></main>
       <Footer />
     </div>
@@ -17,3 +16,4 @@ import Nav from "../components/Nav";
 }
       
 export default LayoutPrincipal;
+      
