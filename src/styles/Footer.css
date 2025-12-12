@@ -1,0 +1,177 @@
+/* --- VARIABLES --- */
+:root {
+    --footer-bg: #2c3e50; /* Color oscuro (similar a Sidebar) */
+    --footer-text-light: #ecf0f1; /* Gris claro */
+    --footer-accent: #007bff; /* Azul primario */
+    --footer-secondary-text: #bdc3c7; /* Gris más oscuro para párrafos */
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.footer-container {
+    background-color: var(--footer-bg);
+    color: var(--footer-text-light);
+    padding: 50px 20px 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* --- GRID DE CONTENIDO PRINCIPAL --- */
+.footer-content-grid {
+    display: grid;
+    /* Tres columnas uniformes */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separador sutil */
+}
+
+.footer-column h4 {
+    font-size: 1.2em;
+    color: var(--footer-accent);
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- 1. BRAND Y SOCIAL --- */
+.footer-logo {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--footer-text-light);
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.footer-tagline {
+    color: var(--footer-secondary-text);
+    font-size: 0.9em;
+    margin-bottom: 25px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    font-size: 1.2em;
+    color: var(--footer-text-light);
+    transition: color 0.3s, transform 0.2s;
+}
+
+.social-icon:hover {
+    color: var(--footer-accent); /* Color vibrante al pasar el mouse */
+    transform: translateY(-2px);
+}
+
+/* --- 2. ENLACES RÁPIDOS --- */
+.links-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.links-column li {
+    margin-bottom: 10px;
+}
+
+.footer-link {
+    color: var(--footer-secondary-text);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-link:hover {
+    color: var(--footer-accent);
+}
+
+/* --- 3. CONTACTO --- */
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.contact-icon {
+    color: var(--footer-accent);
+    font-size: 1em;
+    margin-right: 10px;
+    margin-top: 3px;
+    min-width: 20px;
+}
+
+.contact-item p {
+    margin: 0;
+    font-size: 0.95em;
+    line-height: 1.4;
+    color: var(--footer-secondary-text);
+}
+
+
+/* --- SECCIÓN INFERIOR (COPYRIGHT) --- */
+.footer-bottom {
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 0.8em;
+    color: var(--footer-secondary-text);
+}
+
+.footer-bottom p {
+    margin: 5px 0;
+}
+
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .footer-content-grid {
+        /* Pasa a un layout de dos columnas */
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 30px;
+    }
+
+    .footer-column {
+        text-align: center;
+    }
+    
+    .brand-info {
+        grid-column: 1 / -1; /* Ocupa todo el ancho superior */
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 20px;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+    
+    .links-column {
+        /* Mantiene enlaces */
+        text-align: left;
+    }
+
+    .contact-column {
+        /* Mantiene contacto */
+        text-align: left;
+    }
+    
+    .contact-item {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-content-grid {
+        /* Una columna en la vista más pequeña */
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-column, .links-column {
+        text-align: center;
+    }
+
+    .contact-item {
+        justify-content: center;
+    }
+}

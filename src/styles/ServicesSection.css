@@ -1,0 +1,131 @@
+/* --- VARIABLES --- */
+:root {
+    --service-primary: #007bff;
+    --service-secondary: #34495e;
+    --service-bg-light: #f8f9fa;
+    --service-card-bg: #ffffff;
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.services-section-container {
+    padding: 80px 20px;
+    background-color: var(--service-bg-light);
+    font-family: Arial, sans-serif;
+}
+
+.services-heading {
+    text-align: center;
+    font-size: 2.5em;
+    color: var(--service-secondary);
+    margin-bottom: 10px;
+}
+
+.services-subheading {
+    text-align: center;
+    font-size: 1.1em;
+    color: #6c757d;
+    margin-bottom: 50px;
+}
+
+/* --- GRID DE SERVICIOS --- */
+.services-grid {
+    display: grid;
+    /* Diseño responsivo con Grid: 
+       Mínimo 300px por columna, auto-ajustable */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- TARJETA DE SERVICIO (CARD) --- */
+.service-card {
+    background-color: var(--service-card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Icono */
+.service-icon-wrapper {
+    background-color: var(--service-primary);
+    padding: 15px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.service-icon {
+    font-size: 2em;
+    color: white;
+}
+
+.service-card h3 {
+    font-size: 1.4em;
+    color: var(--service-secondary);
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    color: #495057;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Asegura que todas las tarjetas tengan la misma altura si el contenido es variable */
+}
+
+.service-link {
+    color: var(--service-primary);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.service-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* --- CTA INFERIOR --- */
+.services-cta-bottom {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.btn-secondary-service-cta {
+    background-color: transparent;
+    color: var(--service-primary);
+    border: 2px solid var(--service-primary);
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    display: inline-block;
+}
+
+.btn-secondary-service-cta:hover {
+    background-color: var(--service-primary);
+    color: white;
+}
+
+/* --- MEDIA QUERIES --- */
+@media (max-width: 650px) {
+    .services-heading {
+        font-size: 2em;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr; /* Una columna en móvil */
+    }
+}

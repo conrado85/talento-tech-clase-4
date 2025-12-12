@@ -50,6 +50,9 @@ function Navbar() {
               <li className="nav-item">
                 <NavLink to="/productos" className="nav-link">Productos</NavLink>
               </li>
+               <li className="nav-item">
+                <NavLink to="/contacto" className="nav-link">Contacto</NavLink>
+              </li>
             
             </ul>
 
@@ -127,10 +130,7 @@ const NavLink = styled(Link)`
   text-decoration: none;
   padding: 0.5rem 1rem;
  
-  &:hover {
-    color: white !important;
-    text-decoration: underline;
-  }
+  
 `;
 
 // NavLink especial para admin

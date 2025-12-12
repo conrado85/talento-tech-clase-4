@@ -1,24 +1,35 @@
-
+//pages
 import Inicio from "./pages/Inicio";
-import Servicios from "./pages/Servicios";
+import Servicios from "./pages/ServicesSection";
 import Productos from "./pages/Productos";
 import ProductoDetalle from "./pages/DetalleProdutos";
 import Pagar from "./pages/Pagar";
-import RutaProtegida from "./routes/RutaProtegida";
+import LandingPage from "./pages/LandingPage";
 import IniciarSesion from "./pages/IniciarSesion";
+import ContactSection from "./pages/ContactSection";
+
+//routes
+import RutaProtegida from "./routes/RutaProtegida";
+
+//context
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
 import { ProductsProvider } from "./context/ProductsContext";
-import Dashboard from "./pages/Dashboard";
+
+//components
 import FormularioProducto from './components/FormularioProducto';
 import EliminarProducto from './components/EliminarProducto';
-import PublicLayout from "./layout/PublicLayout"; // <--- IMPORTAR EL NUEVO LAYOUT
-import DashboardLayout from "./layout/DashboardLayout"; // <--- ASEGÚRATE DE IMPORTARLO
 
+//layouts
+import PublicLayout from "./layout/PublicLayout";
+import DashboardLayout from "./layout/DashboardLayout"; 
+
+// Importar estilos de Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
+// Importar React Toastify para notificaciones
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; 
 
@@ -34,12 +45,13 @@ function App() {
               {/* RUTAS PÚBLICAS (Usando PublicLayout) */}
               {/* Estas rutas tendrán Navbar y Footer */}
               <Route element={<PublicLayout />}> 
-                <Route path="/" element={<Inicio />} />
+                <Route path="/" element={<LandingPage />} />
                 <Route path="/servicios" element={<Servicios />} />
                 <Route path="/productos" element={<Productos />} />
                 <Route path="/productos/:id" element={<ProductoDetalle />} />
                 <Route path="/productos/:categoria/:id" element={<ProductoDetalle />} />
                 <Route path="/iniciar-sesion" element={<IniciarSesion />} />
+                <Route path="/contacto" element={<ContactSection />} />
                
               </Route>
               {/* RUTAS DE ADMINISTRACIÓN (Usando DashboardLayout) */}
