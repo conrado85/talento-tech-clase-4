@@ -24,7 +24,7 @@ function Navbar() {
     <>
       <NavbarContainer className="navbar navbar-expand-lg navbar-dark fixed-top">
         <div className="container-fluid">
-          <Logo to="/" className="navbar-brand">Juegos</Logo>
+          <Logo to="/" className="navbar-brand">TechFix</Logo>
           
           <button 
             className="navbar-toggler" 
@@ -59,7 +59,7 @@ function Navbar() {
             <SeccionUsuario className="d-flex align-items-center gap-3">
               <ContenedorCarrito> 
                 <IconoCarrito to="/pagar" className="nav-link d-flex align-items-center">
-                  <span className="me-1">Carrito</span>
+                  <span className="me-1"></span>
                   <FaShoppingCart />  
                   {totalItemsCarrito > 0 && (
                     <ContadorCarrito>
@@ -97,7 +97,7 @@ export default Navbar;
 
 // Styled Components actualizados
 const NavbarContainer = styled.nav`
-  background-color: #556B2F !important;
+  background-color: #2f376bff !important;
   padding: 0.5rem 1rem;
 `;
 

@@ -1,13 +1,13 @@
-import React from "react";
+
 import Inicio from "./pages/Inicio";
 import Servicios from "./pages/Servicios";
-import Navbar from "./pages/Navbar";
+import Navbar from "./components/Navbar";
 import Productos from "./pages/Productos";
 import ProductoDetalle from "./pages/DetalleProdutos";
 import Pagar from "./pages/Pagar";
-import RutaProtegida from "./pages/RutaProtegida";
+import RutaProtegida from "./routes/RutaProtegida";
 import IniciarSesion from "./pages/IniciarSesion";
-import Footer from "./pages/Footer";
+import Footer from "./components/Footer";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
