@@ -31,8 +31,7 @@ function App() {
         <CartProvider>
           <ProductsProvider>
             <Routes>
-              {/* ---------------------------------------------------- */}
-              {/* 1. RUTAS PÚBLICAS (Usando PublicLayout) */}
+              {/* RUTAS PÚBLICAS (Usando PublicLayout) */}
               {/* Estas rutas tendrán Navbar y Footer */}
               <Route element={<PublicLayout />}> 
                 <Route path="/" element={<Inicio />} />
@@ -41,23 +40,20 @@ function App() {
                 <Route path="/productos/:id" element={<ProductoDetalle />} />
                 <Route path="/productos/:categoria/:id" element={<ProductoDetalle />} />
                 <Route path="/iniciar-sesion" element={<IniciarSesion />} />
-                <Route path="/pagar" element={<RutaProtegida><Pagar /></RutaProtegida>}/>
+               
               </Route>
-              
-              {/* ---------------------------------------------------- */}
-              {/* 2. RUTAS DE ADMINISTRACIÓN (Usando DashboardLayout) */}
+              {/* RUTAS DE ADMINISTRACIÓN (Usando DashboardLayout) */}
               {/* Estas rutas NO tendrán Navbar ni Footer, solo Sidebar */}
               <Route element={<RutaProtegida soloAdmin={true}><DashboardLayout /></RutaProtegida>}>
                 {/* La ruta principal del dashboard */}
-                <Route path="/dashboard" element={<Dashboard />} /> 
-                
-                {/* Rutas anidadas de administración */}
-                <Route path="/formulario-producto" element={<FormularioProducto />} />
-                <Route path="/eliminar-producto" element={<EliminarProducto />} />
+                <Route path="/dashboard" element={<Inicio/>} /> 
+                <Route path="/dashboard/productos" element={<Productos />} />
+                <Route path="/dashboard/productos/:id" element={<ProductoDetalle />} />
+                <Route path="/dashboard/formulario-producto" element={<FormularioProducto />} />
+                <Route path="/dashboard/eliminar-producto" element={<EliminarProducto />} />
+                <Route path="/dashboard/pagar" element={<RutaProtegida><Pagar /></RutaProtegida>}/>
               </Route>
-              
-              {/* ---------------------------------------------------- */}
-              {/* 3. Redirección por defecto y manejo de 404 */}
+               {/* Redirección por defecto y manejo de 404 */}
               <Route path="*" element={<Navigate to="/" replace />} />
 
             </Routes>

@@ -1,0 +1,127 @@
+/* --- LAYOUT Y CONTENEDOR PRINCIPAL --- */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Asegura que ocupe al menos la altura de la ventana visible menos el navbar/footer */
+    min-height: calc(100vh - 100px); 
+    background-color: #f4f7f9; /* Fondo muy claro */
+    padding: 20px;
+}
+
+/* --- TARJETA DE LOGIN --- */
+.login-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-title {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.login-subtitle {
+    color: #6c757d;
+    margin-bottom: 25px;
+}
+
+/* --- FORMULARIO Y CAMPOS --- */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+/* --- GRUPO DE BOTONES --- */
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn {
+    flex-grow: 1; /* Para que los botones se distribuyan uniformemente */
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, opacity 0.2s;
+}
+
+.btn-primary-login {
+    background-color: #28a745; /* Verde de éxito */
+    color: white;
+}
+
+.btn-primary-login:hover {
+    background-color: #1e7e34;
+}
+
+.btn-cancel-login {
+    background-color: #6c757d; /* Gris de cancelación */
+    color: white;
+}
+
+.btn-cancel-login:hover {
+    background-color: #5a6268;
+}
+
+/* --- CREDENCIALES DE PRUEBA --- */
+.test-credentials-box {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #e9ecef;
+    border-radius: 6px;
+    font-size: 0.85em;
+    text-align: left;
+    border-left: 3px solid #007bff;
+}
+
+.test-credentials-box strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.test-credentials-box p {
+    margin: 0;
+    line-height: 1.5;
+    color: #495057;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 480px) {
+    .login-card {
+        padding: 30px 20px;
+    }
+    
+    .login-title {
+        font-size: 1.5em;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+}

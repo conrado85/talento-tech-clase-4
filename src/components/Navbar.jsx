@@ -13,6 +13,7 @@ function Navbar() {
   const totalItemsCarrito = carrito.reduce((total, item) => total + item.cantidad, 0);
 
   const manejarCerrarSesion = () => {
+    // Esto se mantiene para la experiencia de usuario en la página pública
     navigate("/productos");
     setTimeout(() => {
       vaciarCarrito();
@@ -49,14 +50,11 @@ function Navbar() {
               <li className="nav-item">
                 <NavLink to="/productos" className="nav-link">Productos</NavLink>
               </li>
-              {usuario?.nombre === "admin" && (
-                <li className="nav-item">
-                  <NavLink to="/formulario-producto" className="nav-link">Agregar Producto</NavLink>
-                </li>
-              )}
+            
             </ul>
 
             <SeccionUsuario className="d-flex align-items-center gap-3">
+              {/* Carrito se mantiene, ya que es una función de usuario/pública */}
               <ContenedorCarrito> 
                 <IconoCarrito to="/pagar" className="nav-link d-flex align-items-center">
                   <span className="me-1"></span>
@@ -74,9 +72,12 @@ function Navbar() {
                   <Bienvenida>Hola, {usuario.nombre}</Bienvenida>
                  
                   {usuario.nombre === "admin" && (
-                    <NavLinkAdmin to="/dashboard" className="nav-link">Dashboard</NavLinkAdmin>
+                     <NavLinkAdmin to="/dashboard" className="btn btn-sm btn-outline-info">
+                       Dashboard
+                     </NavLinkAdmin>
                   )}
-                 
+                  
+                  {/* Cerrar Sesión se mantiene aquí para la vista pública */}
                   <BotonCerrarSesion onClick={manejarCerrarSesion} className="btn btn-outline-light btn-sm">
                     Cerrar Sesión
                   </BotonCerrarSesion>
@@ -93,8 +94,8 @@ function Navbar() {
   )
 } 
 
-export default Navbar;
 
+export default Navbar;
 // Styled Components actualizados
 const NavbarContainer = styled.nav`
   background-color: #2f376bff !important;

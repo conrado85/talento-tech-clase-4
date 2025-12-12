@@ -1,0 +1,223 @@
+/* --- CONFIGURACIÓN GENERAL DE LA PÁGINA --- */
+.payment-page-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    font-family: 'Arial', sans-serif;
+}
+
+.section-title {
+    font-size: 1.8em;
+    color: #333;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+/* --- SECCIÓN DE INFORMACIÓN DEL USUARIO --- */
+.user-info-section {
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+}
+
+.user-greeting {
+    color: #007bff; /* Azul primario */
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+.user-email {
+    color: #6c757d;
+    font-size: 0.9em;
+}
+
+.token-display-box {
+    background: #e9ecef;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 15px 0;
+    font-size: 0.8em;
+    word-break: break-all;
+    border-left: 4px solid #007bff;
+}
+
+.session-actions {
+    margin-top: 15px;
+}
+
+/* --- LISTA DE ÍTEMS DEL CARRITO --- */
+.cart-summary-section {
+    padding: 20px;
+}
+
+.cart-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.cart-item-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    transition: box-shadow 0.3s;
+}
+
+.cart-item-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.item-details {
+    flex-grow: 1;
+}
+
+.item-name {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #212529;
+}
+
+.item-subtotal {
+    margin-top: 5px;
+    color: #28a745; /* Verde para el subtotal */
+    font-size: 1.1em;
+}
+
+.empty-cart-message {
+    font-size: 1.2em;
+    color: #dc3545; /* Rojo de advertencia */
+    text-align: center;
+    padding: 30px;
+    background-color: #f8d7da;
+    border-radius: 8px;
+}
+
+/* --- TOTAL Y BOTONES DE FINALIZACIÓN --- */
+.checkout-actions {
+    padding-top: 20px;
+    border-top: 2px dashed #ced4da;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Alinea el total y los botones a la derecha */
+}
+
+.total-amount {
+    font-size: 2em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+}
+.total-amount span {
+    color: #28a745; /* Verde fuerte para el valor final */
+}
+
+.action-buttons-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap; /* Asegura que los botones se envuelvan en móvil */
+    justify-content: flex-end;
+}
+
+/* --- ESTILOS DE BOTONES REUTILIZABLES --- */
+
+.btn {
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+    border: 1px solid transparent;
+}
+
+/* Botón Primario (Pagar) */
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Botón Secundario (Seguir Comprando) */
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Botón de Advertencia Outline (Vaciar Carrito) */
+.btn-warning-outline {
+    background-color: transparent;
+    color: #ffc107;
+    border-color: #ffc107;
+}
+.btn-warning-outline:hover {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+/* Botón Outline para Cerrar Sesión */
+.btn-secondary-outline {
+    background-color: transparent;
+    color: #6c757d;
+    border-color: #6c757d;
+    padding: 8px 15px; /* Más pequeño */
+    font-weight: normal;
+}
+.btn-secondary-outline:hover {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* --- MEDIA QUERIES PARA MÓVIL --- */
+@media (max-width: 768px) {
+    .payment-page-container {
+        margin: 20px auto;
+        padding: 10px;
+    }
+    
+    .cart-item-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .item-image {
+        width: 100%;
+        height: auto;
+        max-height: 150px;
+    }
+
+    .checkout-actions {
+        align-items: stretch; /* Estira elementos */
+    }
+
+    .action-buttons-group {
+        flex-direction: column; /* Apila los botones */
+        justify-content: stretch;
+        gap: 10px;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}

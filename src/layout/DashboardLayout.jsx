@@ -7,7 +7,7 @@ const DashboardLayout = () => {
   return (
 
     <div className="dashboard-container">
-      <Navbar />
+    
       <Sidebar />
       <main className="main-content">
         {/* Renderiza el componente de ruta anidada (Dashboard, FormularioProducto, etc.) */}

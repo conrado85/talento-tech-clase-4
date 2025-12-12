@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import CarritoCompras from "./Carrito";
 import { useCartContext } from "../context/CartContext";
 import { useAuthContext } from "../context/AuthContext";
 import { useProducts } from "../context/ProductsContext";
@@ -18,12 +17,12 @@ export default function Productos() {
 
   const manejarEliminar = (producto) => {
     // Navegar a la página de confirmación de eliminación
-    navigate('/eliminar-producto', { state: { producto } });
+    navigate('/dashboard/eliminar-producto', { state: { producto } });
   };
 
   const manejarEditar = (producto) => {
     // Navegar al formulario de edición
-    navigate('/formulario-producto', { state: { producto } });
+    navigate('/dashboard/formulario-producto', { state: { producto } });
   };
 
   const productosFiltrados = productos.filter((producto) =>
