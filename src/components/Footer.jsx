@@ -9,7 +9,7 @@ const Footer = () => {
         <footer className="footer-container">
             <div className="footer-content-grid">
                 
-                {/* 1. Logo y Descripción */}
+            
                 <div className="footer-column brand-info">
                     <Link to="/" className="footer-logo">TechFix</Link>
                     <p className="footer-tagline">
@@ -23,7 +23,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                {/* 2. Enlaces Rápidos */}
+               
                 <div className="footer-column links-column">
                     <h4>Navegación</h4>
                     <ul>
@@ -35,7 +35,7 @@ const Footer = () => {
                     </ul>
                 </div>
 
-                {/* 3. Información de Contacto */}
+                
                 <div className="footer-column contact-column">
                     <h4>Contacto</h4>
                     <div className="contact-item">
@@ -54,7 +54,7 @@ const Footer = () => {
 
             </div>
 
-            {/* Derechos de Autor */}
+           
             <div className="footer-bottom">
                 <p>&copy; {new Date().getFullYear()} TechFix. Todos los derechos reservados.</p>
                 <p>Diseño por Conrado Gonzalez</p>
