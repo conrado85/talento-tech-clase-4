@@ -122,6 +122,14 @@
 .action-button-primary:hover {
   background-color: #2980b9;
 }
+.cart-badge {
+  background-color: var(--color-accent);
+  color: white;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 12px;
+  margin-left: 8px;
+}
 
 
 /* --- MEDIA QUERY PARA VISTAS MÓVILES (Max-width 768px) --- */

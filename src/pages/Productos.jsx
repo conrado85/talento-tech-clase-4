@@ -1,8 +1,15 @@
-import { Link, useNavigate } from "react-router-dom";
+// src/pages/Productos.jsx
+import { useNavigate } from "react-router-dom";
 import { useCartContext } from "../context/CartContext";
 import { useAuthContext } from "../context/AuthContext";
 import { useProducts } from "../context/ProductsContext";
 import { useState } from "react";
+// Importar los componentes estilizados
+import {
+  CardContainer, CardImage, CardBody, CardTitle, CardText, CardPrice,
+  DetailLink, AddToCartButton, AdminActionsContainer, AdminButton, CartIcon
+} from "../components/ProductCardStyles";
+
 
 export default function Productos() {
   const { productos, cargando, error } = useProducts();
@@ -11,19 +18,17 @@ export default function Productos() {
   const navigate = useNavigate();
 
   const [busqueda, setBusqueda] = useState("");
-  const [paginaActual, setPaginaActual] = useState(1); //Variable de estado para la paginación
+  const [paginaActual, setPaginaActual] = useState(1);
 
-  const productosPorPagina = 6; // Cantidad de productos a mostrar por página
+  const productosPorPagina = 6;
 
- 
+  // ... (Toda la lógica de paginación y filtrado se mantiene igual)
 
   const manejarEliminar = (producto) => {
-    // Navegar a la página de confirmación de eliminación
     navigate("/dashboard/eliminar-producto", { state: { producto } });
   };
 
   const manejarEditar = (producto) => {
-    // Navegar al formulario de edición
     navigate("/dashboard/formulario-producto", { state: { producto } });
   };
 
@@ -41,13 +46,11 @@ export default function Productos() {
     indiceUltimoProducto
   );
 
-  // Cambiar de página
   const totalPaginas = Math.ceil(
     productosFiltrados.length / productosPorPagina
   );
   const cambiarPagina = (numeroPagina) => setPaginaActual(numeroPagina);
 
-  // Resetear a página 1 con búsquedas
   const manejarBusqueda = (e) => {
     setBusqueda(e.target.value);
     setPaginaActual(1);
@@ -59,7 +62,7 @@ export default function Productos() {
   return (
     <>
       <div className="container mt-4">
-        {/* Barra de búsqueda */}
+        {/* Barra de búsqueda (se mantiene el estilo Bootstrap) */}
         <div className="row mb-4">
           <div className="col-12 col-md-6">
             <label className="form-label fw-bold">Buscar productos</label>
@@ -83,72 +86,60 @@ export default function Productos() {
         <div className="row">
           {productosActuales.map((producto) => (
             <div key={producto.id} className="col-12 col-md-6 col-lg-4 mb-4">
-              <div className="card h-100">
-                <img
+              <CardContainer> {/* Componente estilizado */}
+                <CardImage 
                   src={producto.avatar}
                   alt={producto.nombre}
-                  className="card-img-top"
-                  style={{ height: "200px", objectFit: "cover" }}
                 />
 
-                <div className="card-body d-flex flex-column">
-                  <h5 className="card-title">{producto.nombre}</h5>
-                  <p className="card-text flex-grow-1">
-                    {producto.descripcion}
-                  </p>
-                  <p className="card-text fw-bold text-primary">
-                    ${producto.precio}
-                  </p>
+                <CardBody> {/* Componente estilizado */}
+                  <CardTitle>{producto.nombre}</CardTitle>
+                  <CardText>{producto.descripcion}</CardText>
+                  
+                  <CardPrice>
+                    ${Number(producto.precio).toFixed(3)}
+                  </CardPrice>
 
-                  <div className="mt-auto">
-                    <div className="d-grid gap-2">
-                      <Link
-                        to={
-                          esAdmin
-                            ? `/dashboard/productos/${producto.id}`
-                            : `/productos/${producto.id}`
+                  <div className="d-grid gap-2">
+                    <DetailLink
+                      to={
+                        esAdmin
+                          ? `/dashboard/productos/${producto.id}`
+                          : `/productos/${producto.id}`
                         }
                         state={{ producto }}
-                        className="btn btn-outline-primary btn-sm"
-                      >
-                        Ver detalles
-                      </Link>
-                      <button
-                        onClick={() => agregarAlCarrito(producto)}
-                        className="btn btn-sm"
-                        style={{ backgroundColor: "#2f376bff", color: "white" }}
-                      >
-                        Agregar al carrito
-                      </button>
-                    </div>
-
-                    {/* Botones de admin */}
-                    {esAdmin && (
-                      <div className="mt-3 pt-3 border-top">
-                        <div className="d-flex gap-2">
-                          <button
-                            onClick={() => manejarEditar(producto)}
-                            className="btn btn-light btn-sm flex-fill"
-                          >
-                            Editar
-                          </button>
-                          <button
-                            onClick={() => manejarEliminar(producto)}
-                            className="btn btn-light btn-sm flex-fill"
-                          >
-                            Eliminar
-                          </button>
-                        </div>
-                      </div>
-                    )}
+                    >
+                      Ver detalles
+                    </DetailLink>
+                    <AddToCartButton
+                      onClick={() => agregarAlCarrito(producto)}
+                    >
+                      <CartIcon /> Agregar al carrito
+                    </AddToCartButton>
                   </div>
-                </div>
-              </div>
+
+                  {/* Botones de admin */}
+                  {esAdmin && (
+                    <AdminActionsContainer> {/* Componente estilizado */}
+                      <AdminButton
+                        onClick={() => manejarEditar(producto)}
+                      >
+                        Editar
+                      </AdminButton>
+                      <AdminButton
+                        onClick={() => manejarEliminar(producto)}
+                      >
+                        Eliminar
+                      </AdminButton>
+                    </AdminActionsContainer>
+                  )}
+                </CardBody>
+              </CardContainer>
             </div>
           ))}
         </div>
 
-        {/* Paginador - Estilo simplificado */}
+        {/* Paginador (se mantiene el estilo Bootstrap) */}
         {productosFiltrados.length > productosPorPagina && (
           <div className="d-flex justify-content-center my-4">
             {Array.from({ length: totalPaginas }, (_, index) => (

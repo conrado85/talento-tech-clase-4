@@ -29,7 +29,7 @@ const Sidebar = () => {
           <item.icon className="nav-icon" />
           <span className="nav-text">{item.name}</span>
           {item.name === 'Gestionar compra' && (
-            <span className="cart-badge">{totalItemsCarrito}</span>
+            <span className="cart-badge"> {totalItemsCarrito}</span>
           )}
         </Link>
       ))}

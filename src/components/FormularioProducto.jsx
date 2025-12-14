@@ -91,7 +91,7 @@ function FormularioProducto() {
         });
 
         setTimeout(() => {
-          navigate('/productos');
+          navigate('/dashboard/productos');
         }, 100);
 
       } else {
@@ -100,7 +100,7 @@ function FormularioProducto() {
         alert('Producto actualizado correctamente');
 
         setTimeout(() => {
-          navigate('/productos');
+          navigate('/dashboard/productos');
         }, 100);
       }
      
@@ -117,7 +117,7 @@ function FormularioProducto() {
   const cancelarEdicion = () => {
     if (modo === "editar") {
       alert('Edición cancelada');
-      navigate('/productos');
+      navigate('/dashboard/productos');
     }
   };
 
