@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import.meta.env.VITE_API_URL;
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 function EliminarProducto() {
   const location = useLocation();
@@ -15,7 +18,7 @@ function EliminarProducto() {
     setCargando(true);
     try {
       const respuesta = await
-      fetch(`https://68d482e3214be68f8c696ae2.mockapi.io/api/productos/${producto.id}`, {
+      fetch(`${API_URL}/productos/${producto.id}`, {
         method: 'DELETE',
       });
      
@@ -102,7 +105,7 @@ function EliminarProducto() {
         </button>
        
         <button
-          onClick={() => navigate('/productos')}
+          onClick={() => navigate('/dashboard/productos')}
           disabled={cargando}
           style={{
             padding: '12px 24px',

@@ -13,31 +13,39 @@ export default function Productos() {
   const [busqueda, setBusqueda] = useState("");
   const [paginaActual, setPaginaActual] = useState(1); //Variable de estado para la paginación
 
-   const productosPorPagina = 6; // Cantidad de productos a mostrar por página
+  const productosPorPagina = 6; // Cantidad de productos a mostrar por página
+
+ 
 
   const manejarEliminar = (producto) => {
     // Navegar a la página de confirmación de eliminación
-    navigate('/dashboard/eliminar-producto', { state: { producto } });
+    navigate("/dashboard/eliminar-producto", { state: { producto } });
   };
 
   const manejarEditar = (producto) => {
     // Navegar al formulario de edición
-    navigate('/dashboard/formulario-producto', { state: { producto } });
+    navigate("/dashboard/formulario-producto", { state: { producto } });
   };
 
-  const productosFiltrados = productos.filter((producto) =>
-    producto.nombre.toLowerCase().includes(busqueda.toLowerCase()) || (producto.categoria && producto.categoria.toLowerCase().includes(busqueda.toLowerCase())
-)
+  const productosFiltrados = productos.filter(
+    (producto) =>
+      producto.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
+      (producto.categoria &&
+        producto.categoria.toLowerCase().includes(busqueda.toLowerCase()))
   );
 
-    const indiceUltimoProducto = paginaActual * productosPorPagina;
+  const indiceUltimoProducto = paginaActual * productosPorPagina;
   const indicePrimerProducto = indiceUltimoProducto - productosPorPagina;
-  const productosActuales = productosFiltrados.slice(indicePrimerProducto, indiceUltimoProducto);
- 
-  // Cambiar de página
-  const totalPaginas = Math.ceil(productosFiltrados.length / productosPorPagina);
-  const cambiarPagina = (numeroPagina) => setPaginaActual(numeroPagina);
+  const productosActuales = productosFiltrados.slice(
+    indicePrimerProducto,
+    indiceUltimoProducto
+  );
 
+  // Cambiar de página
+  const totalPaginas = Math.ceil(
+    productosFiltrados.length / productosPorPagina
+  );
+  const cambiarPagina = (numeroPagina) => setPaginaActual(numeroPagina);
 
   // Resetear a página 1 con búsquedas
   const manejarBusqueda = (e) => {
@@ -45,12 +53,10 @@ export default function Productos() {
     setPaginaActual(1);
   };
 
-
-
   if (cargando) return <p>Cargando productos...</p>;
   if (error) return <p>{error}</p>;
 
-return (
+  return (
     <>
       <div className="container mt-4">
         {/* Barra de búsqueda */}
@@ -66,12 +72,12 @@ return (
             />
             {busqueda && (
               <small className="text-muted">
-                Mostrando {productosFiltrados.length} de {productos.length} productos
+                Mostrando {productosFiltrados.length} de {productos.length}{" "}
+                productos
               </small>
             )}
           </div>
         </div>
-
 
         {/* Grid de productos */}
         <div className="row">
@@ -84,7 +90,7 @@ return (
                   className="card-img-top"
                   style={{ height: "200px", objectFit: "cover" }}
                 />
-               
+
                 <div className="card-body d-flex flex-column">
                   <h5 className="card-title">{producto.nombre}</h5>
                   <p className="card-text flex-grow-1">
@@ -93,12 +99,16 @@ return (
                   <p className="card-text fw-bold text-primary">
                     ${producto.precio}
                   </p>
-                 
+
                   <div className="mt-auto">
                     <div className="d-grid gap-2">
                       <Link
-                        to={`/productos/${producto.id}`}
-                        state={{producto}}
+                        to={
+                          esAdmin
+                            ? `/dashboard/productos/${producto.id}`
+                            : `/productos/${producto.id}`
+                        }
+                        state={{ producto }}
                         className="btn btn-outline-primary btn-sm"
                       >
                         Ver detalles
@@ -106,12 +116,11 @@ return (
                       <button
                         onClick={() => agregarAlCarrito(producto)}
                         className="btn btn-sm"
-                        style={{ backgroundColor: '#556B2F', color: 'white' }}
+                        style={{ backgroundColor: "#2f376bff", color: "white" }}
                       >
                         Agregar al carrito
                       </button>
                     </div>
-
 
                     {/* Botones de admin */}
                     {esAdmin && (
@@ -139,14 +148,17 @@ return (
           ))}
         </div>
 
-
         {/* Paginador - Estilo simplificado */}
         {productosFiltrados.length > productosPorPagina && (
           <div className="d-flex justify-content-center my-4">
             {Array.from({ length: totalPaginas }, (_, index) => (
               <button
                 key={index + 1}
-                className={`btn mx-1 ${paginaActual === index + 1 ? "btn-primary" : "btn-outline-primary"}`}
+                className={`btn mx-1 ${
+                  paginaActual === index + 1
+                    ? "btn-primary"
+                    : "btn-outline-primary"
+                }`}
                 onClick={() => cambiarPagina(index + 1)}
               >
                 {index + 1}
@@ -155,13 +167,12 @@ return (
           </div>
         )}
 
-
-        {/* Información de la página actual */}  
+        {/* Información de la página actual */}
         {productosFiltrados.length > 0 && (
           <div className="text-center text-muted mt-2">
             <small>
-              Mostrando {productosActuales.length} productos
-              (página {paginaActual} de {totalPaginas})
+              Mostrando {productosActuales.length} productos (página{" "}
+              {paginaActual} de {totalPaginas})
             </small>
           </div>
         )}

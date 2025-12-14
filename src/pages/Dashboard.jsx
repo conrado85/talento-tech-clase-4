@@ -19,14 +19,14 @@ export default function Dashboard() {
         
         <div className="dashboard-summary-card">
           <p>
-            <strong>Bienvenido/a: </strong> {usuario?.nombre || 'Cargando...'}
+            <strong>Bienvenido/a : </strong> {usuario?.nombre || 'Cargando...'}
           </p>
           
           {/* TOKEN */}
           <div className="token-display-box">
             <strong>Token de autenticación:</strong>
             <br />
-            {/* OJO: No se recomienda mostrar tokens en el dashboard, pero lo mantenemos por tu ejemplo */}
+            {/* OJO: No se recomienda mostrar tokens en el dashboard */}
             <code className="token-code">{tokenActual}</code>
           </div>
 
