@@ -58,7 +58,7 @@ function App() {
               {/* Estas rutas NO tendrán Navbar ni Footer, solo Sidebar */}
               <Route element={<RutaProtegida soloAdmin={true}><DashboardLayout /></RutaProtegida>}>
                 {/* La ruta principal del dashboard */}
-                <Route path="/dashboard" element={<Inicio/>} /> 
+                <Route path="/dashboard" element={<DashboardLayout />} /> 
                 <Route path="/dashboard/productos" element={<Productos />} />
                 <Route path="/dashboard/productos/:id" element={<ProductoDetalle />} />
                 <Route path="/dashboard/formulario-producto" element={<FormularioProducto />} />
