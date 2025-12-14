@@ -1,7 +1,6 @@
-// src/pages/LandingPage.jsx
-import React from 'react';
 import { FaLaptopCode, FaWrench, FaShieldAlt, FaRocket } from 'react-icons/fa';
 import '../styles/LandingPage.css'; // Importamos los estilos
+import PhoneCarousel from '../components/PhoneCarousel';
 
 const LandingPage = () => {
     return (
@@ -47,6 +46,14 @@ const LandingPage = () => {
                     />
                 </div>
             </section>
+
+            <section className="phone-carousel-section">
+                <PhoneCarousel
+                    autoPlay={true}
+                    interval={4000}
+                />
+
+            </section>   
 
             {/* SECCIÓN TESTIMONIOS */}
             <section className="testimonials-section">

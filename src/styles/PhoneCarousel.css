@@ -1,0 +1,128 @@
+/* --- VARIABLES --- */
+:root {
+    --carousel-primary: #007bff;
+    --carousel-bg-dark: rgba(0, 0, 0, 0.6);
+    --carousel-transition: transform 0.5s ease-in-out;
+}
+
+/* --- CONTENEDOR PRINCIPAL Y VISUALIZACIÓN --- */
+.carousel-container {
+    max-width: 1300px;
+    margin: 40px auto;
+    position: relative;
+    overflow: hidden; /* Oculta las diapositivas fuera de la vista */
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-wrapper {
+    display: flex;
+    width: 100%;
+    transition: var(--carousel-transition); /* Aplica transición al desplazamiento */
+}
+
+.carousel-slide {
+    min-width: 100%; /* Cada slide ocupa el 100% del ancho del contenedor */
+    box-sizing: border-box;
+    position: relative;
+    height: 500px; /* Altura fija para el carrusel */
+}
+
+/* --- IMAGEN Y PIE DE FOTO --- */
+.slide-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse */
+}
+
+.slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--carousel-bg-dark);
+    color: white;
+    padding: 15px 20px;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+/* --- CONTROLES (FLECHAS) --- */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.5em;
+    opacity: 0.7;
+    transition: opacity 0.3s, background-color 0.3s;
+}
+
+.carousel-control:hover {
+    opacity: 1;
+    background-color: var(--carousel-bg-dark);
+}
+
+.carousel-control.prev {
+    left: 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.carousel-control.next {
+    right: 0;
+    border-radius: 8px 0 0 8px;
+}
+
+/* --- INDICADORES (PUNTOS) --- */
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.indicator.active,
+.indicator:hover {
+    background-color: var(--carousel-primary);
+    transform: scale(1.2);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .carousel-slide {
+        height: 350px; /* Reducir altura en móvil */
+    }
+    
+    .slide-caption {
+        font-size: 1em;
+        padding: 10px;
+    }
+
+    .carousel-control {
+        padding: 10px;
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-slide {
+        height: 250px;
+    }
+}
