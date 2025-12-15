@@ -1,5 +1,5 @@
 //pages
-import Inicio from "./pages/Inicio";
+import DashboardHome from "./pages/DashboardHome";
 import Servicios from "./pages/ServicesSection";
 import Productos from "./pages/Productos";
 import ProductoDetalle from "./pages/DetalleProdutos";
@@ -7,7 +7,7 @@ import Pagar from "./pages/Pagar";
 import LandingPage from "./pages/LandingPage";
 import IniciarSesion from "./pages/IniciarSesion";
 import ContactSection from "./pages/ContactSection";
-
+import ServiceManager from "./pages/ServiceManager";
 //routes
 import RutaProtegida from "./routes/RutaProtegida";
 
@@ -35,6 +35,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 
+
+
 function App() {
   return (
     <div>
@@ -58,12 +60,13 @@ function App() {
               {/* Estas rutas NO tendrán Navbar ni Footer, solo Sidebar */}
               <Route element={<RutaProtegida soloAdmin={true}><DashboardLayout /></RutaProtegida>}>
                 {/* La ruta principal del dashboard */}
-                <Route path="/dashboard" element={<DashboardLayout />} /> 
+                <Route path="/dashboard" element={<DashboardHome />} /> 
                 <Route path="/dashboard/productos" element={<Productos />} />
                 <Route path="/dashboard/productos/:id" element={<ProductoDetalle />} />
                 <Route path="/dashboard/formulario-producto" element={<FormularioProducto />} />
                 <Route path="/dashboard/eliminar-producto" element={<EliminarProducto />} />
                 <Route path="/dashboard/pagar" element={<RutaProtegida><Pagar /></RutaProtegida>}/>
+                <Route path="/dashboard/servicios-tecnicos" element={<ServiceManager />} />
               </Route>
                {/* Redirección por defecto y manejo de 404 */}
               <Route path="*" element={<Navigate to="/" replace />} />

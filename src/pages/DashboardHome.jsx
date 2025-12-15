@@ -97,11 +97,11 @@ export default function DashboardHome() {
             path: "/dashboard/productos" // Redirige a la vista principal de productos para editar
         },
         {
-            title: "Confirmar Pedidos",
+            title: "Confirmar Compra",
             description: "Revisa y gestiona las órdenes de compra pendientes de los clientes.",
             icon: FaCheckCircle,
             color: "#ffc107", // Amarillo
-            path: "/dashboard/ordenes"
+            path: "/dashboard/pagar"
         },
         {
             title: "Revisar Servicios",
